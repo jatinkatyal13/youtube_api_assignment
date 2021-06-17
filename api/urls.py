@@ -1,6 +1,9 @@
 from django.urls import path
 
-from api.views import PingView
+from api.views import GetVideosView, SearchVideosView
 
 
-urlpatterns = [path("ping/", PingView.as_view())]
+urlpatterns = [
+    path("videos/", GetVideosView.as_view()),
+    path("videos/search", SearchVideosView.as_view())
+]

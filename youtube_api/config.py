@@ -11,3 +11,8 @@ class Config:
 
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
     YOUTUBE_KEYWORDS = os.environ.get("YOUTUBE_KEYWORDS", "").split(",")
+
+    DB_NAME = os.environ.get("DB_NAME")
+    DB_USER = os.environ.get("DB_USER")
+    DB_PASSWORD = os.environ.get("DB_PASSWORD")
+    DB_HOST = os.environ.get("DB_HOST")

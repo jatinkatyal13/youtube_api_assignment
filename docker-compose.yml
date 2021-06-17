@@ -1,0 +1,23 @@
+version: "3.2"
+
+services:
+  postgres:
+    image: "postgres"
+    environment:
+        - POSTGRES_USER=yt_api
+        - POSTGRES_PASSWORD=yt_api
+        - POSTGRES_DB=yt_api
+  yt_api:
+    build: .
+    depends_on:
+        - postgres
+    image: "jatinkatyal/youtube_api"
+    ports:
+        - "8000:8000"
+    environment:
+        - DB_NAME=yt_api
+        - DB_USER=yt_api
+        - DB_PASSWORD=yt_api
+        - DB_HOST=postgres
+    env_file:
+        - ".env"
