@@ -10,7 +10,7 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "abc")
     ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
-    YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
+    YOUTUBE_API_KEYS = os.environ.get("YOUTUBE_API_KEYS").split(",")
     YOUTUBE_KEYWORDS = os.environ.get("YOUTUBE_KEYWORDS", "").split(",")
 
     DB_NAME = os.environ.get("DB_NAME")
