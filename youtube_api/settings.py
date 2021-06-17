@@ -1,12 +1,12 @@
+import os
 from pathlib import Path
-from dotenv import load_dotenv
 
 from youtube_api.config import Config
 
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+os.environ.setdefault("PYTHONPATH", str(BASE_DIR))
 
 SECRET_KEY = Config.SECRET_KEY
 
@@ -15,6 +15,7 @@ DEBUG = Config.DEBUG
 ALLOWED_HOSTS = Config.ALLOWED_HOSTS
 
 INSTALLED_APPS = [
+    "api",
     "rest_framework",
     "django.contrib.auth",
     "django.contrib.contenttypes",

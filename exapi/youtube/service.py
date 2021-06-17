@@ -1,4 +1,6 @@
-from aiohttp import ClientSession
+import requests
+from typing import List
+from datetime import datetime, timedelta, timezone
 
 from youtube_api.config import Config
 
@@ -10,15 +12,19 @@ class YoutubeExapi:
         self._api_url = api_url
         self._api_key = api_key
 
-    async def search_videos(self, session: ClientSession, query: str) -> YoutubeVideo:
-        params = {"part": "snippet,id", "key": self._api_key, "q": query}
+    def search_videos(self, query: str) -> List[YoutubeVideo]:
+        now = datetime.now(timezone.utc)
+        published_after_datetime = now - timedelta(days=1)
+        published_after = published_after_datetime.astimezone().isoformat()
+        params = {"part": "snippet,id", "key": self._api_key, "q": query, "publishedAfter": published_after}
 
-        async with session.get(
+        response = requests.get(
             f"{self._api_url}/youtube/v3/search", params=params
-        ) as response:
-            dikt = await response.json()
+        )
 
-            return [YoutubeVideo.from_dikt(video) for video in dikt["items"]]
+        dikt = response.json()
+
+        return [YoutubeVideo.from_dikt(video) for video in dikt["items"]]
 
 
 def get_youtube_exapi():

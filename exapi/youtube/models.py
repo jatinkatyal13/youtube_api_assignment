@@ -8,7 +8,7 @@ class YoutubeVideo:
     title: str
     description: str
     published_at: datetime
-    thumbnail: str
+    thumbnail_url: str
 
     @classmethod
     def from_dikt(cls, dikt) -> "YoutubeVideo":
@@ -17,5 +17,5 @@ class YoutubeVideo:
             title=dikt["snippet"]["title"],
             description=dikt["snippet"]["description"],
             published_at=dikt["snippet"]["publishedAt"],
-            thumbnail=dikt["snippet"]["thumbnails"]["default"]["url"],
+            thumbnail_url=dikt["snippet"]["thumbnails"]["default"]["url"],
         )
