@@ -4,6 +4,4 @@ from rest_framework.response import Response
 # Create your views here.
 class PingView(APIView):
     def get(self, request):
-        return Response({
-            "message": "pong"
-        })
+        return Response({"message": "pong"})
