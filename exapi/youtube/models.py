@@ -11,7 +11,7 @@ class YoutubeVideo:
     thumbnail_url: str
 
     @classmethod
-    def from_dikt(cls, dikt) -> "YoutubeVideo":
+    def from_dict(cls, dikt) -> "YoutubeVideo":
         return cls(
             video_id=dikt["id"]["videoId"],
             title=dikt["snippet"]["title"],

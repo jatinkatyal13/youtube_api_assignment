@@ -24,7 +24,7 @@ class YoutubeExapi:
 
         dikt = response.json()
 
-        return [YoutubeVideo.from_dikt(video) for video in dikt["items"]]
+        return [YoutubeVideo.from_dict(video) for video in dikt["items"]]
 
 
 def get_youtube_exapi():

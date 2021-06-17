@@ -1,6 +1,8 @@
 FROM python:3.9-slim
 
 RUN pip install poetry gunicorn
+RUN apt-get update
+RUN apt-get install -y cron
 
 WORKDIR /app
 
@@ -8,6 +10,12 @@ RUN poetry config virtualenvs.create false
 ADD pyproject.toml poetry.lock /app/
 RUN poetry install --no-root --no-interaction --no-ansi
 
-ADD . /app
+COPY start.sh /bin/start.sh
 
-CMD ["gunicorn", "youtube_api.wsgi", "-b", "0.0.0.0:8000"]
+COPY cron.cfg /etc/cron.d/cron.cfg
+
+RUN crontab /etc/cron.d/cron.cfg
+
+COPY . /app
+
+CMD ["/bin/start.sh"]
