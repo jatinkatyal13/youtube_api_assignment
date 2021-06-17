@@ -41,12 +41,12 @@ ROOT_URLCONF = "youtube_api.urls"
 WSGI_APPLICATION = "youtube_api.wsgi.application"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': Config.DB_NAME,
-        'USER': Config.DB_USER,
-        'PASSWORD': Config.DB_PASSWORD,
-        'HOST': Config.DB_HOST,
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": Config.DB_NAME,
+        "USER": Config.DB_USER,
+        "PASSWORD": Config.DB_PASSWORD,
+        "HOST": Config.DB_HOST,
     }
 }
 

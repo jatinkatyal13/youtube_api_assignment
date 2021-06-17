@@ -16,11 +16,14 @@ class YoutubeExapi:
         now = datetime.now(timezone.utc)
         published_after_datetime = now - timedelta(days=1)
         published_after = published_after_datetime.astimezone().isoformat()
-        params = {"part": "snippet,id", "key": self._api_key, "q": query, "publishedAfter": published_after}
+        params = {
+            "part": "snippet,id",
+            "key": self._api_key,
+            "q": query,
+            "publishedAfter": published_after,
+        }
 
-        response = requests.get(
-            f"{self._api_url}/youtube/v3/search", params=params
-        )
+        response = requests.get(f"{self._api_url}/youtube/v3/search", params=params)
 
         dikt = response.json()
 
